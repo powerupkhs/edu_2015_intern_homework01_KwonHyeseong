@@ -21,6 +21,8 @@ import com.ntscorp.homework.java.order.CarOrderInfo;
  * 
  *         carManager 시스템과 카매니저 객체 연동<br>
  *         carOrderManager 시스템과 카오더매니저 객체 연동
+ * 
+ *         연료 소비량 = 운행거리 / 보정된연비로 계산한다. (보정된 연비 : Bus는 연비*1.0, Truck은 연비*0.9로계산)
  */
 public class CalculationManager {
 	private CarManager carManager;
@@ -39,7 +41,7 @@ public class CalculationManager {
 	 * @return 전체차량별 연료소비량 스트링
 	 */
 	public String getAllCarFuelConsumption() {
-		Iterator<Car> carIterator = carManager.getCars().values().iterator();
+		Iterator<Car> carIterator = carManager.getValues().iterator();
 		String sumCarFuelConsumption = "";
 
 		while (carIterator.hasNext()) {
@@ -49,7 +51,7 @@ public class CalculationManager {
 			sumCarFuelConsumption = sumCarFuelConsumption + currentCar.getCarFuelConsumption() + Math.round(currentCarFuelConsumption * 100.0) / 100.0 + " 입니다.\n";
 		}
 
-		return sumCarFuelConsumption;
+		return sumCarFuelConsumption + "\n";
 	}
 
 	/**
@@ -65,7 +67,7 @@ public class CalculationManager {
 		double totalFuelConsumption = 0.0;
 		double fuelConsumption = 0.0;
 
-		Iterator<CarOrder> carOrdersIterator = carOrderManager.getCarOrders().values().iterator();
+		Iterator<CarOrder> carOrdersIterator = carOrderManager.getValues().iterator();
 
 		while (carOrdersIterator.hasNext()) {
 			CarOrder currentCarOrder = carOrdersIterator.next();
@@ -90,7 +92,7 @@ public class CalculationManager {
 	 * @return 전체운행지시서별 연료소비량 스트링
 	 */
 	public String getAllOrderFuelConsumption() {
-		Iterator<CarOrder> carOrderIterator = carOrderManager.getCarOrders().values().iterator();
+		Iterator<CarOrder> carOrderIterator = carOrderManager.getValues().iterator();
 		String sumCarOrderFuelConsumption = "";
 
 		while (carOrderIterator.hasNext()) {
@@ -100,7 +102,7 @@ public class CalculationManager {
 			sumCarOrderFuelConsumption = sumCarOrderFuelConsumption + currentCarOrder + Math.round(currentCarFuelConsumption * 100.0) / 100.0 + " 입니다.\n";
 		}
 
-		return sumCarOrderFuelConsumption;
+		return sumCarOrderFuelConsumption + "\n";
 	}
 
 	/**
@@ -122,7 +124,12 @@ public class CalculationManager {
 		while (carOrderIterator.hasNext()) {
 			String currentCarNumber = carOrderIterator.next();
 
-			Car currentCar = carManager.getCars().get(currentCarNumber);
+			Car currentCar = carManager.getCar(currentCarNumber);
+
+			if (currentCar == null) {
+				continue;
+			}
+
 			runDistance = inputCarOrder.getDriveData().get(currentCarNumber).getDriveDistance();
 
 			fuelConsumption = runDistance / (currentCar.getInfo().getFuelEfficiency() * currentCar.getAdjustedFuelEfficiency());

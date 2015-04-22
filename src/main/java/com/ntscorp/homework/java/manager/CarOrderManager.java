@@ -7,6 +7,7 @@
 
 package com.ntscorp.homework.java.manager;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -29,11 +30,11 @@ public class CarOrderManager {
 		carOrders = new TreeMap<String, CarOrder>();
 	}
 
-	public Map<String, CarOrder> getCarOrders() {
-		return carOrders;
+	public Collection<CarOrder> getValues() {
+		return carOrders.values();
 	}
 
-	public void setCarOrders(Map<String, CarOrder> carOrders) {
+	public void putAll(Map<String, CarOrder> carOrders) {
 		this.carOrders = carOrders;
 	}
 }

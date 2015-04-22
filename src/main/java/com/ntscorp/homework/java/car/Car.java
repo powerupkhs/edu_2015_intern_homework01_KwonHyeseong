@@ -29,15 +29,6 @@ public abstract class Car {
 	}
 
 	/**
-	 * 차량 정보 출력 메소드
-	 * 
-	 * @return 스트링으로 변환된 정보
-	 */
-	public String getCarInformation() {
-		return type + "\t 차량번호 : " + number + "\t 연비 : " + info.getFuelEfficiency() + "\n";
-	}
-
-	/**
 	 * 총 연료소비량 출력 메소드
 	 * 
 	 * @return 스트링으로 변환된 정보

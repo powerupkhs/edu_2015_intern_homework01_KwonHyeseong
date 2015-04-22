@@ -17,8 +17,8 @@ package com.ntscorp.homework.java.order;
 public class CarOrderInfo {
 	private double driveDistance;
 
-	public CarOrderInfo() {
-
+	public CarOrderInfo(double driveDistance) {
+		this.driveDistance = driveDistance;
 	}
 
 	public double getDriveDistance() {
@@ -27,5 +27,29 @@ public class CarOrderInfo {
 
 	public void setDriveDistance(double driveDistance) {
 		this.driveDistance = driveDistance;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(driveDistance);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CarOrderInfo other = (CarOrderInfo) obj;
+		if (Double.doubleToLongBits(driveDistance) != Double.doubleToLongBits(other.driveDistance))
+			return false;
+		return true;
 	}
 }

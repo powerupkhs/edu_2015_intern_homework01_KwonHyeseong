@@ -17,10 +17,6 @@ package com.ntscorp.homework.java.car;
 public class CarInfo {
 	private double fuelEfficiency;
 
-	public CarInfo() {
-
-	}
-
 	public CarInfo(double fuelEfficiency) {
 		this.fuelEfficiency = fuelEfficiency;
 	}

@@ -7,7 +7,7 @@
 
 package com.ntscorp.homework.java.manager;
 
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -28,36 +28,15 @@ public class CarManager {
 		cars = new TreeMap<String, Car>(); // 정렬된 출력을 위해 트리맵 사용
 	}
 
-	/**
-	 * 전체보기 메소드
-	 * 
-	 * 차량이 없을경우 메세지를 출력합니다. 각 차량에 대해 출력메소드를 호출합니다.
-	 * 
-	 * @return 전체 차량 정보 스트링
-	 */
-	public String getAllImformation() {
-		if (cars.size() == 0) {
-			return "!! 등록된 차량이 없습니다 !!";
-		}
-
-		Iterator<Car> carIterator = cars.values().iterator();
-		String sumInformation = "";
-
-		// 전체 차량에 대해 정보출력 함수 호출
-		while (carIterator.hasNext()) {
-			Car currentCar = carIterator.next();
-
-			sumInformation = sumInformation + currentCar.getCarInformation();
-		}
-
-		return sumInformation;
+	public Collection<Car> getValues() {
+		return cars.values();
 	}
 
-	public Map<String, Car> getCars() {
-		return cars;
+	public Car getCar(String carNumber) {
+		return cars.get(carNumber);
 	}
 
-	public void setCars(Map<String, Car> cars) {
+	public void putAll(Map<String, Car> cars) {
 		this.cars = cars;
 	}
 }

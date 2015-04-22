@@ -25,7 +25,7 @@ public interface DataManager {
 	 *            읽어올 위치
 	 * @return 객체집합
 	 */
-	public Map<String, Car> readList();
+	public Map<String, Car> readList(String folderPath);
 
-	public Map<String, CarOrder> readOrder();
+	public Map<String, CarOrder> readOrder(String folderPath);
 }

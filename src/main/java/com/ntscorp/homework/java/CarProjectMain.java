@@ -17,6 +17,6 @@ package com.ntscorp.homework.java;
 public class CarProjectMain {
 	public static void main(String[] args) {
 		CarManagementSystem carManagementSystem = new CarManagementSystem();
-		carManagementSystem.showMainMenu();
+		carManagementSystem.startMain();
 	}
 }
