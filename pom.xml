@@ -3,6 +3,9 @@
   <groupId>edu_2015_intern_homework01_KwonHyeseong</groupId>
   <artifactId>edu_2015_intern_homework01_KwonHyeseong</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+  	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -34,6 +37,7 @@
         <configuration>
           <source/>
           <target/>
+          <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
     </plugins>
