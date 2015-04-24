@@ -23,7 +23,19 @@
 				<configLocation>${basedir}/checkstyle-UTF8(ver1.2).xml</configLocation >
 			</configuration>
 		</plugin>
-	</plugins>
+	
+		<plugin>
+			<groupId>com.atlassian.maven.plugins</groupId>
+			<artifactId>maven-clover2-plugin</artifactId>
+			<version>4.0.0</version>
+			<configuration>
+				<includesTestSourceRoots>true</includesTestSourceRoots>
+				<licenseLocation>${clover.license}</licenseLocation>
+				<encoding>UTF-8</encoding>
+                    <jdk>1.6</jdk>
+               </configuration>
+          </plugin>
+        </plugins>
 	</reporting>
   
   <properties>
@@ -53,6 +65,19 @@
       </resource>
     </resources>
     <plugins>
+      <plugin>
+		<groupId>com.atlassian.maven.plugins</groupId>
+		<artifactId>maven-clover2-plugin</artifactId>
+		<version>4.0.0</version>
+		<configuration>
+			<includesTestSourceRoots>true</includesTestSourceRoots>
+			<licenseLocation>${clover.license}</licenseLocation>
+			<generateHtml>true</generateHtml>
+			<generateXml>true</generateXml>
+			<jdk>1.6</jdk>
+		</configuration>
+	</plugin>
+      
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
@@ -96,6 +121,5 @@
 		</configuration>
 	</plugin>
     </plugins>
-   
   </build>
 </project>
