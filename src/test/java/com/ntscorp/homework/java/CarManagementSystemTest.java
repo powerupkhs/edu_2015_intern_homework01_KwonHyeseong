@@ -30,6 +30,8 @@ import com.ntscorp.homework.java.order.CarOrder;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class CarManagementSystemTest {
+	private static int EXECUTE_NUMBER = 1;
+
 	@Mock
 	private DataManager fileInputSystem;
 
@@ -38,6 +40,20 @@ public class CarManagementSystemTest {
 
 	@InjectMocks
 	private CarManagementSystem carManagementSystem = new CarManagementSystem();
+
+	/**
+	 * 메인 메소드 테스트 (가장 마지막에 부르는 메소드를 한번 호출했는지를 검사)
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testStartMain() throws Exception {
+		// when 
+		carManagementSystem.startMain();
+
+		// then
+		verify(calculationManager, times(EXECUTE_NUMBER)).getAllOrderFuelConsumption();
+	}
 
 	/**
 	 * 메인시스템에서 연료소비량 계산 메소드를 호출할때 값 반환을 테스트
@@ -78,14 +94,50 @@ public class CarManagementSystemTest {
 	}
 
 	/**
-	 * 메인시스템에서 파일리드를 호출할때 실패하는 테스트
+	 * 메인시스템에서 파일리드를 호출할때 둘다 NULL을 리턴해서 실패하는 테스트
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void testCallFileInputManagerNull() throws Exception {
+	public void testCallFileInputManagerAllNull() throws Exception {
 		// given
 		when(fileInputSystem.readList(FileInputManager.FOLDER_LIST_PATH)).thenReturn(null);
+		when(fileInputSystem.readOrder(FileInputManager.FOLDER_ORDER_PATH)).thenReturn(null);
+		String expectedResult = "!! 데이터를 불러오는데 실패하였습니다. !!\n";
+		// when 
+		String actualResult = carManagementSystem.callFileInputOperation();
+
+		// then
+		assertEquals(expectedResult, actualResult);
+	}
+
+	/**
+	 * 메인시스템에서 파일리드를 호출할때 readList만 NULL을 리턴해서 실패하는 테스트
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testCallFileInputManagerReadListNull() throws Exception {
+		// given
+		when(fileInputSystem.readList(FileInputManager.FOLDER_LIST_PATH)).thenReturn(null);
+		when(fileInputSystem.readOrder(FileInputManager.FOLDER_ORDER_PATH)).thenReturn(new TreeMap<String, CarOrder>());
+		String expectedResult = "!! 데이터를 불러오는데 실패하였습니다. !!\n";
+		// when 
+		String actualResult = carManagementSystem.callFileInputOperation();
+
+		// then
+		assertEquals(expectedResult, actualResult);
+	}
+
+	/**
+	 * 메인시스템에서 파일리드를 호출할때 readOrder만 NULL을 리턴해서 실패하는 테스트
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testCallFileInputManagerReadOrderNull() throws Exception {
+		// given
+		when(fileInputSystem.readList(FileInputManager.FOLDER_LIST_PATH)).thenReturn(new TreeMap<String, Car>());
 		when(fileInputSystem.readOrder(FileInputManager.FOLDER_ORDER_PATH)).thenReturn(null);
 		String expectedResult = "!! 데이터를 불러오는데 실패하였습니다. !!\n";
 		// when 

@@ -78,32 +78,8 @@ public class CarManagementSystem {
 		}
 	}
 
-	public CarManager getCarManager() {
-		return carManager;
-	}
-
-	public void setCarManager(CarManager carManager) {
-		this.carManager = carManager;
-	}
-
-	public CarOrderManager getCarOrderManager() {
-		return carOrderManager;
-	}
-
-	public void setCarOrderManager(CarOrderManager carOrderManager) {
-		this.carOrderManager = carOrderManager;
-	}
-
-	public DataManager getFileInputSystem() {
-		return fileInputSystem;
-	}
-
 	public void setFileInputSystem(DataManager fileInputSystem) {
 		this.fileInputSystem = fileInputSystem;
-	}
-
-	public CalculationManager getCalculationManager() {
-		return calculationManager;
 	}
 
 	public void setCalculationManager(CalculationManager calculationManager) {
