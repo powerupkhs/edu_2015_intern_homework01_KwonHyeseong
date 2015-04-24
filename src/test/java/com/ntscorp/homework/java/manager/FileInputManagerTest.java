@@ -92,6 +92,7 @@ public class FileInputManagerTest {
 	//		fileInputManager.readListFromFile(listFile.getParentFile().getAbsolutePath(), "Exception.txt");
 	//
 	//		// then (익셉션 발생)
+
 	//	}
 
 	/**
