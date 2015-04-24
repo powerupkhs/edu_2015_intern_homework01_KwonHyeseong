@@ -1,0 +1,10 @@
+- /
++ /src/main/java
++ /src/main/resources
++ /src/test/java
++ /src/webapp/javascripts/service
++ /src/webapp/WEB-INF/jsp
+- jindo_1.0.2.js
+- jquery.js
+- .html
+- .css
