@@ -13,7 +13,7 @@
   <version>0.0.1-SNAPSHOT</version>
 
 <profiles>
-	<!-- klockwork for Jenkins -->
+	<!-- klockwork for Jenkins  -->
 	<profile>
       <id>klocwork</id> 
       <build>
