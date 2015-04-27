@@ -42,7 +42,7 @@ public class FileInputManager implements DataManager {
 	 */
 	public Map<String, Car> readList(String folderPath) {
 		Map<String, Car> cars = new TreeMap<String, Car>();
-		File folder = new File(folderPath);
+		File folder = new File(folderPath);		
 		File fileList[] = folder.listFiles();
 
 		// 폴더의 파일 하나하나마다 리드 메소드 호출

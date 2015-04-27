@@ -83,23 +83,6 @@ public class FileInputManagerTest {
 	 * 
 	 * @throws Exception
 	 */
-	//	@Test(expected = Exception.class)
-	//	public void testReadListFromFileNotFound() throws Exception {
-	//		// given
-	//		//Map<String, Car> cars = new TreeMap<String, Car>();
-	//
-	//		// when 
-	//		fileInputManager.readListFromFile(listFile.getParentFile().getAbsolutePath(), "Exception.txt");
-	//
-	//		// then (익셉션 발생)
-
-	//	}
-
-	/**
-	 * 파일의 데이터를 Car 맵으로 저장하는 테스트
-	 * 
-	 * @throws Exception
-	 */
 	@Test
 	public void testReadListFromFile() throws Exception {
 		// given

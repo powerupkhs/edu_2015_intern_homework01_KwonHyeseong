@@ -1,6 +1,15 @@
+/*
+ * @(#)CarManagementSystemTest.java 2015. 4. 22.
+ *
+ * Copyright 2015 NAVER Corp. All rights Reserved. 
+ * NAVER PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
+
+
 package com.ntscorp.homework.java;
 
 import static org.junit.Assert.*;
+
 import static org.mockito.Mockito.*;
 
 import java.util.Map;
@@ -18,12 +27,6 @@ import com.ntscorp.homework.java.manager.DataManager;
 import com.ntscorp.homework.java.manager.FileInputManager;
 import com.ntscorp.homework.java.order.CarOrder;
 
-/*
- * @(#)CarManagementSystemTest.java 2015. 4. 22.
- *
- * Copyright 2015 NAVER Corp. All rights Reserved. 
- * NAVER PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
 
 /**
  * @author hyeseong.kwon@nhn.com

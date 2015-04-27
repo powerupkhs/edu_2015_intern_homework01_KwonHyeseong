@@ -77,12 +77,4 @@ public class CarManagementSystem {
 			return "!! 데이터를 불러오는데 실패하였습니다. !!\n";
 		}
 	}
-
-	public void setFileInputSystem(DataManager fileInputSystem) {
-		this.fileInputSystem = fileInputSystem;
-	}
-
-	public void setCalculationManager(CalculationManager calculationManager) {
-		this.calculationManager = calculationManager;
-	}
 }

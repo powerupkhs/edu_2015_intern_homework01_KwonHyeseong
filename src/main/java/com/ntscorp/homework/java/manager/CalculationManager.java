@@ -25,6 +25,8 @@ import com.ntscorp.homework.java.order.CarOrderInfo;
  *         연료 소비량 = 운행거리 / 보정된연비로 계산한다. (보정된 연비 : Bus는 연비*1.0, Truck은 연비*0.9로계산)
  */
 public class CalculationManager {
+	private static final double ROUND_OFF_NUBMER = 100.0; // 3째자리에서 반올림
+	
 	private CarManager carManager;
 	private CarOrderManager carOrderManager;
 
@@ -48,7 +50,7 @@ public class CalculationManager {
 			Car currentCar = carIterator.next();
 
 			double currentCarFuelConsumption = calculateEachCarFuelConsumption(currentCar);
-			sumCarFuelConsumption = sumCarFuelConsumption + currentCar.getCarFuelConsumption() + Math.round(currentCarFuelConsumption * 100.0) / 100.0 + " 입니다.\n";
+			sumCarFuelConsumption = sumCarFuelConsumption + currentCar.getCarFuelConsumption() + Math.round(currentCarFuelConsumption * ROUND_OFF_NUBMER) / ROUND_OFF_NUBMER + " 입니다.\n";
 		}
 
 		return sumCarFuelConsumption + "\n";
@@ -99,7 +101,7 @@ public class CalculationManager {
 			CarOrder currentCarOrder = carOrderIterator.next();
 
 			double currentCarFuelConsumption = calculateEachOrderFuelConsumption(currentCarOrder);
-			sumCarOrderFuelConsumption = sumCarOrderFuelConsumption + currentCarOrder + Math.round(currentCarFuelConsumption * 100.0) / 100.0 + " 입니다.\n";
+			sumCarOrderFuelConsumption = sumCarOrderFuelConsumption + currentCarOrder + Math.round(currentCarFuelConsumption * ROUND_OFF_NUBMER) / ROUND_OFF_NUBMER + " 입니다.\n";
 		}
 
 		return sumCarOrderFuelConsumption + "\n";
