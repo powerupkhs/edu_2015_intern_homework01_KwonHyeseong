@@ -40,9 +40,10 @@ public class FileInputManager implements DataManager {
 	 * 
 	 * @return 전체파일의 Car 객체들 Map
 	 */
+	@Override
 	public Map<String, Car> readList(String folderPath) {
 		Map<String, Car> cars = new TreeMap<String, Car>();
-		File folder = new File(folderPath);		
+		File folder = new File(folderPath);
 		File fileList[] = folder.listFiles();
 
 		// 폴더의 파일 하나하나마다 리드 메소드 호출
@@ -62,6 +63,7 @@ public class FileInputManager implements DataManager {
 	 * 
 	 * @return CarOrder 전체 Map
 	 */
+	@Override
 	public Map<String, CarOrder> readOrder(String folderPath) {
 		Map<String, CarOrder> carOrders = new TreeMap<String, CarOrder>();
 		File folder = new File(folderPath);

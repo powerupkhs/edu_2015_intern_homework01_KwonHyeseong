@@ -1,5 +1,5 @@
 /*
- * @(#)Bus.java 2015. 4. 14.
+ * @(#)Bus.java 2015. 4. 15.
  *
  * Copyright 2015 NAVER Corp. All rights Reserved. 
  * NAVER PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
@@ -17,5 +17,10 @@ public class Bus extends Car {
 		super(number, info);
 		setType(Bus.class.getSimpleName());
 		setAdjustedFuelEfficiency(1.0);
+	}
+
+	@Override
+	public int compareTo(Car car) {
+		return this.getNumber().compareTo(car.getNumber());
 	}
 }

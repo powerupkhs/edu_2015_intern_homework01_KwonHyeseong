@@ -17,7 +17,7 @@ import com.ntscorp.homework.java.order.CarOrderInfo;
 /**
  * @author hyeseong.kwon@nhn.com
  * 
- *         연료 소비량 계산 클래스 (계산에 관련된 로직을 분리)
+ *         연료 소비량 계산 클래스 (계산에 관련된 로직 분리)
  * 
  *         carManager 시스템과 카매니저 객체 연동<br>
  *         carOrderManager 시스템과 카오더매니저 객체 연동
@@ -26,13 +26,18 @@ import com.ntscorp.homework.java.order.CarOrderInfo;
  */
 public class CalculationManager {
 	private static final double ROUND_OFF_NUBMER = 100.0; // 3째자리에서 반올림
-	
+
 	private CarManager carManager;
 	private CarOrderManager carOrderManager;
 
 	public CalculationManager(CarManager carManager, CarOrderManager carOrderManager) {
 		this.carManager = carManager;
 		this.carOrderManager = carOrderManager;
+	}
+	
+	public CalculationManager() {
+		carManager = new CarManager();
+		carOrderManager = new CarOrderManager();
 	}
 
 	/**
@@ -139,5 +144,18 @@ public class CalculationManager {
 		}
 
 		return totalFuelConsumption;
+	}
+	
+	/**
+	 * 자동차 하나와 운행거리를 입력받아 연료 소비량을 계산
+	 * 
+	 * @param inputCar 연료소비량을 계산할 자동차
+	 * @param driveDistance 운행거리
+	 * @return 연료소비량
+	 */
+	public double calculateEachCarFuelConsumption(Car inputCar, double driveDistance) {
+		double fuelConsumption = driveDistance / (inputCar.getInfo().getFuelEfficiency() * inputCar.getAdjustedFuelEfficiency());
+		fuelConsumption = Math.round(fuelConsumption * ROUND_OFF_NUBMER) / ROUND_OFF_NUBMER;
+		return fuelConsumption;
 	}
 }

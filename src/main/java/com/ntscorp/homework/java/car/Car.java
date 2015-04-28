@@ -1,5 +1,5 @@
 /*
- * @(#)Car.java 2015. 4. 14.
+ * @(#)Car.java 2015. 4. 15.
  *
  * Copyright 2015 NAVER Corp. All rights Reserved. 
  * NAVER PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
@@ -17,7 +17,7 @@ package com.ntscorp.homework.java.car;
  *         info 자동차 스펙 관리<br>
  *         adjustedFuelEfficiency 보정된 연비
  */
-public abstract class Car {
+public abstract class Car implements Comparable<Car>{
 	private String type;
 	private String number;
 	private CarInfo info;
